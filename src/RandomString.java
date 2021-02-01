@@ -1,5 +1,3 @@
-package mschottGenerator;
-
 public class RandomString
 {
     static String getAlphaNumericString(final int n) {

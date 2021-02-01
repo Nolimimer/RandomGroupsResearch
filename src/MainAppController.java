@@ -1,5 +1,3 @@
-package mschottGenerator;
-
 import java.util.Random;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
@@ -12,8 +10,6 @@ public class MainAppController
     @FXML
     TextField inputTextField;
     private static StringBuilder sb;
-    private static final String intervention = "Interventionsgruppe";
-    private static final String control = "Kontrollgruppe";
     private final Random random;
     
     static {
@@ -28,7 +24,13 @@ public class MainAppController
     public void generateClicked() {
         this.addElement(this.inputTextField.getText().split(","));
     }
-    
+
+    @FXML
+    public void change() {
+        Main.primaryStage.setScene(Main.sceneSec);
+        Main.primaryStage.show();
+    }
+
     private void addElement(final String... strings) {
         for (final String s : strings) {
             final String string = String.valueOf(s) + " " + RandomString.getAlphaNumericString(8) + " " + this.next() + " \n";
@@ -36,7 +38,7 @@ public class MainAppController
             this.textArea.setText(MainAppController.sb.toString());
         }
     }
-    
+
     private String next() {
         if (this.random.nextBoolean()) {
             return "Interventionsgruppe";
